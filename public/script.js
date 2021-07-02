@@ -77,26 +77,50 @@ const addVideoStream = (video, stream) => {
   });
 };
 
-document.getElementById("shareScreen").addEventListener('click', (e) => {
-  navigator.mediaDevices.getDisplayMedia({
-    video: {
-      cursor:"always"
-    },
-    audio: true
-  }).then((stream) => {
-    let videoTrack = stream.getVideoTracks()[0];
-    videoTrack.onended = function () {
-      stopScreenShare();
-    }
-    let sender = currentPeer.getSenders().find(function (s) {
+let screenStream;
+let isScreenShare=false;
+let screenShare =document.getElementById("shareScreen");
+screenShare.addEventListener('click', (e) => {
+  console.log(isScreenShare);
+  if(!isScreenShare)
+  {
+    html = `<i class="fas fa-desktop-slash"></i>`;
+    screenShare.innerHTML = html;
+    screenShare.classList.toggle("background__red");
+    navigator.mediaDevices.getDisplayMedia({
+      video: {
+        cursor:"always"
+      },
+      audio: true
+    }).then((stream) => {
+      screenStream=stream;
+      let videoTrack = stream.getVideoTracks()[0];
+      videoTrack.onended = function () {
+        stopScreenShare();
+      }
+      let sender = currentPeer.getSenders().find(function (s) {
+        return s.track.kind == videoTrack.kind;
+      })
+      sender.replaceTrack(videoTrack);
+      isScreenShare=true;
+    }).catch((err) => {
+      console.log("unable to get display media"+err)
+    })
+  }
+  else
+  {
+    html = `<i class="fas fa-desktop"></i>`;
+    screenShare.innerHTML = html;
+    screenShare.classList.toggle("background__red");
+    screenStream.getVideoTracks().forEach(track => track.stop());    
+    let videoTrack = myVideoStream.getVideoTracks()[0];
+    var sender = currentPeer.getSenders().find(function (s) {
       return s.track.kind == videoTrack.kind;
     })
-    sender.replaceTrack(videoTrack);
-  }).catch((err) => {
-    console.log("unable to get display media"+err)
-  })
+    sender.replaceTrack(videoTrack)
+    isScreenShare=false;
+  }
 })
-
 
 let text = document.querySelector("#chat_message");
 let send = document.getElementById("send");
