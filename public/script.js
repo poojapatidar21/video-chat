@@ -55,11 +55,12 @@ navigator.mediaDevices
       messages.innerHTML =
     messages.innerHTML +
     `<div class="message">
-    <div>
-        <b> <span> ${
+    
+        <b>
+        <div><span> ${
           userName === user ? "You joined" : userName+" joined"
-        }</span> </b>
-        </div>
+        }</span></div> </b>
+
     </div>`;
       connectToNewUser(userId, stream);
     });
