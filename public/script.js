@@ -119,8 +119,6 @@ text.addEventListener("keydown", (e) => {
 const inviteButton = document.querySelector("#inviteButton");
 const muteButton = document.querySelector("#muteButton");
 const stopVideo = document.querySelector("#stopVideo");
-const shareScreen = document.querySelector("#shareScreen");
-
 muteButton.addEventListener("click", () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
   if (enabled) {
@@ -135,33 +133,13 @@ muteButton.addEventListener("click", () => {
     muteButton.innerHTML = html;
   }
 });
-
-screenShare.addEventListener("click", () => {
-  const enabled = myVideoStream.getVideoTracks()[0].enabled;
-  if (enabled) {
-    myVideoStream.getVideoTracks()[0].enabled = false;
-    var sender = currentPeer.getSenders().find(function (s) {
-          return s.track.kind == videoTrack.kind;
-        })
-        sender.replaceTrack(videoTrack)
-    html = `<i class="fas fa-desktop-slash"></i>`;
-    screenShare.classList.toggle("background__red");
-    screenShare.innerHTML = html;
-  } else {
-    myVideoStream.getVeideoTracks()[0].enabled = true;
-    html = `<i class="fas fa-desktop"></i>`;
-    screenShare.classList.toggle("background__red");
-    screenShare.innerHTML = html;
-  }
-});
-
-// function stopScreenShare() {
-//   let videoTrack = myVideoStream.getVideoTracks()[0];
-//   var sender = currentPeer.getSenders().find(function (s) {
-//     return s.track.kind == videoTrack.kind;
-//   })
-//   sender.replaceTrack(videoTrack)
-// }
+function stopScreenShare() {
+  let videoTrack = myVideoStream.getVideoTracks()[0];
+  var sender = currentPeer.getSenders().find(function (s) {
+    return s.track.kind == videoTrack.kind;
+  })
+  sender.replaceTrack(videoTrack)
+}
 
 stopVideo.addEventListener("click", () => {
   const enabled = myVideoStream.getVideoTracks()[0].enabled;
