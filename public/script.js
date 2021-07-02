@@ -159,6 +159,9 @@ muteButton.addEventListener("click", () => {
 });
 function stopScreenShare() {
   let videoTrack = myVideoStream.getVideoTracks()[0];
+  html = `<i class="fas fa-desktop"></i>`;
+  screenShare.innerHTML = html;
+  screenShare.classList.toggle("background__red");
   var sender = currentPeer.getSenders().find(function (s) {
     return s.track.kind == videoTrack.kind;
   })
