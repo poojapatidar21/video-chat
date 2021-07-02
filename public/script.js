@@ -51,7 +51,15 @@ navigator.mediaDevices
       });
     });
 
-    socket.on("user-connected", (userId) => {
+    socket.on("user-connected", (userId,userName) => {
+      messages.innerHTML =
+    messages.innerHTML +
+    `<div class="message">
+        <b> <span> ${
+          userName === user ? "You joined" : userName+" join"
+        }</span> </b>
+        
+    </div>`;
       connectToNewUser(userId, stream);
     });
   });
