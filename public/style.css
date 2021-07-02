@@ -134,6 +134,7 @@ video {
   display: flex;
   flex-direction: column;
   margin: 1.5rem;
+  padding: 10px;
 }
 
 .message {

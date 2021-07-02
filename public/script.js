@@ -57,9 +57,9 @@ navigator.mediaDevices
     `<div class="message">
     
         <b>
-        <div><span> ${
+        <span> ${
           userName === user ? "You joined" : userName+" joined"
-        }</span></div> </b>
+        }</span> </b>
 
     </div>`;
       connectToNewUser(userId, stream);
@@ -94,7 +94,7 @@ screenShare.addEventListener('click', (e) => {
   console.log(isScreenShare);
   if(!isScreenShare)
   {
-    html = `<i class="fas fa-desktop-slash"></i>`;
+    html = `<i class="fas fa-desktop"></i>`;
     screenShare.innerHTML = html;
     screenShare.classList.toggle("background__red");
     navigator.mediaDevices.getDisplayMedia({
