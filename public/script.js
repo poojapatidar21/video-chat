@@ -27,6 +27,10 @@ var peer = new Peer(undefined, {
   port: "443",
 });
 
+function create_meeting()
+{
+  location.href = "/room";
+};
 
 let myVideoStream;
 navigator.mediaDevices
