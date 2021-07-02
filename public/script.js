@@ -33,7 +33,6 @@ function create_meeting()
 };
 
 let myVideoStream;
-
   socket.on("user-connected", (userId,userName) => {
     messages.innerHTML =
   messages.innerHTML +
@@ -161,14 +160,16 @@ function stopScreenShare() {
 }
 
 stopVideo.addEventListener("click", () => {
-  const enabled = myVideoStream.getVideoTracks()[0].enabled;
-  if (enabled) {
+  // const enabled = myVideoStream.getVideoTracks()[0].enabled;
+  let cameraOn=false;
+  if (cameraOn) {
     myVideoStream.getVideoTracks().forEach(track => track.stop());
     myVideoStream.getVideoTracks()[0].enabled = false;
     html = `<i class="fas fa-video-slash"></i>`;
     stopVideo.classList.toggle("background__red");
     stopVideo.innerHTML = html;
   } else {
+    cameraOn = true;
     navigator.mediaDevices
   .getUserMedia({
     audio: true,
