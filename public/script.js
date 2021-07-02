@@ -33,37 +33,19 @@ function create_meeting()
 };
 
 let myVideoStream;
-navigator.mediaDevices
-  .getUserMedia({
-    audio: true,
-    video: true,
-  })
-  .then((stream) => {
-    myVideoStream = stream;
-    addVideoStream(myVideo, stream);
 
-    peer.on("call", (call) => {
-      call.answer(stream);
-      const video = document.createElement("video");
-      call.on("stream", (userVideoStream) => {
-        addVideoStream(video, userVideoStream);
-        currentPeer=call.peerConnection
-      });
-    });
+  socket.on("user-connected", (userId,userName) => {
+    messages.innerHTML =
+  messages.innerHTML +
+  `<div class="message">
+  
+      <b>
+      <span> ${
+        userName === user ? "You joined" : userName+" joined"
+      }</span> </b>
 
-    socket.on("user-connected", (userId,userName) => {
-      messages.innerHTML =
-    messages.innerHTML +
-    `<div class="message">
-    
-        <b>
-        <span> ${
-          userName === user ? "You joined" : userName+" joined"
-        }</span> </b>
-
-    </div>`;
-      connectToNewUser(userId, stream);
-    });
+  </div>`;
+    connectToNewUser(userId, stream);
   });
 
 const connectToNewUser = (userId, stream) => {
@@ -181,11 +163,30 @@ function stopScreenShare() {
 stopVideo.addEventListener("click", () => {
   const enabled = myVideoStream.getVideoTracks()[0].enabled;
   if (enabled) {
+    myVideoStream.getVideoTracks().forEach(track => track.stop());
     myVideoStream.getVideoTracks()[0].enabled = false;
     html = `<i class="fas fa-video-slash"></i>`;
     stopVideo.classList.toggle("background__red");
     stopVideo.innerHTML = html;
   } else {
+    navigator.mediaDevices
+  .getUserMedia({
+    audio: true,
+    video: true,
+  })
+  .then((stream) => {
+    myVideoStream = stream;
+    addVideoStream(myVideo, stream);
+
+    peer.on("call", (call) => {
+      call.answer(stream);
+      const video = document.createElement("video");
+      call.on("stream", (userVideoStream) => {
+        addVideoStream(video, userVideoStream);
+        currentPeer=call.peerConnection
+      });
+    });
+  });
     myVideoStream.getVideoTracks()[0].enabled = true;
     html = `<i class="fas fa-video"></i>`;
     stopVideo.classList.toggle("background__red");
