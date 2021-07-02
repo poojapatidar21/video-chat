@@ -164,7 +164,7 @@ stopVideo.addEventListener("click", () => {
   let cameraOn=false;
   if (cameraOn) {
     myVideoStream.getVideoTracks().forEach(track => track.stop());
-    // myVideoStream.getVideoTracks()[0].enabled = false;
+    myVideoStream.getVideoTracks()[0].enabled = false;
     html = `<i class="fas fa-video-slash"></i>`;
     stopVideo.classList.toggle("background__red");
     stopVideo.innerHTML = html;
