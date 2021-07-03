@@ -16,9 +16,7 @@
         <div class="header__back">
           <i class="fas fa-angle-left"></i>
         </div>
-        <h3>Video Chat</h3>
-        <p id="p1"></p>
-        <p id="p2"></p>
+        <h3 id="p1">Video Chat</h3>
       </div>
       
     </div>  
@@ -29,16 +27,15 @@
         </div>
       </div>
     </div>
-
-    <script> 
-      var today =new Date();
-      var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-      var time = today.getHours()+":"+today.getMinutes();
-      var dateTime= datw+'  '+time;
-
-      document.getElementById("p1").innerHTML =dateTime
-    </script>
   </body>
   <script src="script.js"></script>
+  <script> 
+    var today =new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours()+":"+today.getMinutes();
+    var dateTime= datw+'  '+time;
+
+    document.getElementById("p1").innerHTML =dateTime
+  </script>
   
 </html>
