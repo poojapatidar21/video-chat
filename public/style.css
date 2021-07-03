@@ -24,11 +24,13 @@
 }
 
 .logo > h3 {
-  color: var(--main-light);
+  color: white;
+  font: size 26px;
 }
 
 .para {
-  margin: 0;
+  margin-right: 107px;
+  color: white;
 }
 
 .main {
@@ -51,11 +53,13 @@
   background-color: var(--main-dark);
 }
 
-.join_meet {
+.join_meet button {
   padding: 20px;
   background-color: blue;
   border-radius: 20px;
+  font-size: 20px;
 }
+
 .videos__group {
   flex-grow: 1;
   display: flex;
