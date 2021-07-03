@@ -20,7 +20,13 @@
   height: 8vh;
   position: relative;
   width: 100%;
-  background-color: var(--main-darklg);
+  background-color: #bc7878;
+}
+
+img {
+  height: 271px;
+  padding: 55px;
+  border-radius: 90px;
 }
 
 .logo h3 {
@@ -56,7 +62,7 @@
 
 .join_meet button {
   padding: 20px;
-  background-color: blue;
+  background-color: #c0bd63;
   border-radius: 20px;
   font-size: 20px;
 }
@@ -184,6 +190,7 @@ video {
 }
 
 .image_main {
+  background: azure;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -193,6 +200,7 @@ video {
 
 .join_meet {
   flex-grow: 1;
+  background: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,11 +209,11 @@ video {
 
 .feature {
   flex-grow: 1;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  text-align: center;
+  padding: 0rem;
 }
+
 .header__back {
   display: none;
   position: absolute;
