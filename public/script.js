@@ -32,6 +32,21 @@ function create_meeting()
   location.href = "/room";
 };
 
+
+socket.on("user-connected", (userId,userName) => {
+  messages.innerHTML =
+  messages.innerHTML +
+  `<div class="message">
+
+      <b>
+      <span> ${
+        userName === user ? "You joined" : userName+" joined"
+      }</span> </b>
+
+  </div>`;
+  connectToNewUser(userId, stream);
+});
+
 let myVideoStream;
 navigator.mediaDevices
   .getUserMedia({
@@ -49,10 +64,6 @@ navigator.mediaDevices
         addVideoStream(video, userVideoStream);
         currentPeer=call.peerConnection
       });
-    });
-
-    socket.on("user-connected", (userId) => {
-      connectToNewUser(userId, stream);
     });
   });
 
@@ -202,4 +213,3 @@ socket.on("createMessage", (message, userName) => {
         <span>${message}</span>
     </div>`;
 });
-
