@@ -28,7 +28,6 @@
 }
 
 .main {
-  overflow: hidden;
   height: 92vh;
   display: flex;
 }
@@ -51,6 +50,7 @@
 .join_meet {
   padding: 20px;
   background-color: blue;
+  border-radius: 20px;
 }
 .videos__group {
   flex-grow: 1;
