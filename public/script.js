@@ -52,7 +52,7 @@ navigator.mediaDevices
       });
     });
 
-    socket.on("user-connected", (userId) => {
+    socket.on("user-connected", (userId,userName) => {
       messages.innerHTML =
       messages.innerHTML +
       `<div class="message">
