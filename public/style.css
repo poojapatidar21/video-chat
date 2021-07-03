@@ -26,8 +26,9 @@
 .logo > h3 {
   color: var(--main-light);
 }
-.header > h2 {
-  color: var(--main-light);
+
+.para {
+  margin: 0;
 }
 
 .main {
