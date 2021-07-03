@@ -20,14 +20,7 @@
           <p id="p1"></p>
           <p id="p2"></p>
       </div>
-      <script> 
-        var today =new Date();
-        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-        var time = today.getHours()+":"+today.getMinutes();
-        var dateTime= datw+'  '+time;
-
-        document.getElementById("p1").innerHTML =dateTime;
-      </script>
+      
     </div>  
     <div class="main">  
       <div class="joinMeetingForm">
@@ -35,8 +28,16 @@
           <button onclick="create_meeting()">Start new meeting</button>
         </div>
       </div>
-    
     </div>
+
+    <script> 
+      var today =new Date();
+      var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+      var time = today.getHours()+":"+today.getMinutes();
+      var dateTime= datw+'  '+time;
+
+      document.getElementById("p1").innerHTML =dateTime
+    </script>
   </body>
   <script src="script.js"></script>
   
