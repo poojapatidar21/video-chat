@@ -33,7 +33,6 @@ function create_meeting()
 };
 
 let myVideoStream;
-let myVideoStream;
 navigator.mediaDevices
   .getUserMedia({
     audio: true,
