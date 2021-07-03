@@ -46,6 +46,7 @@ navigator.mediaDevices
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
+        console.log("next video stream");
         addVideoStream(video, userVideoStream);
         currentPeer=call.peerConnection
       });
