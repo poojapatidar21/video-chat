@@ -26,6 +26,9 @@
 .logo > h3 {
   color: var(--main-light);
 }
+.logo > p {
+  color: var(--main-light);
+}
 
 .main {
   height: 92vh;
