@@ -48,6 +48,10 @@
   background-color: var(--main-dark);
 }
 
+.join_meet {
+  padding: 20px;
+  background-color: blue;
+}
 .videos__group {
   flex-grow: 1;
   display: flex;
