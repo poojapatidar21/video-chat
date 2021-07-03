@@ -53,6 +53,16 @@ navigator.mediaDevices
     });
 
     socket.on("user-connected", (userId) => {
+      messages.innerHTML =
+      messages.innerHTML +
+      `<div class="message">
+      
+          <b>
+          <span> ${
+            userName === user ? "You joined" : userName+" joined"
+          }</span> </b>
+    
+      </div>`;
       connectToNewUser(userId, stream);
     });
   });
