@@ -20,7 +20,7 @@
   height: 8vh;
   position: relative;
   width: 100%;
-  background-color: #bc7878;
+  background-color: #2e43dd;
 }
 
 img {
@@ -73,7 +73,7 @@ img {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #ddc9cb;
+  background-color: #c9d4dd;
 }
 
 video {
@@ -87,7 +87,7 @@ video {
 .options {
   padding: 1rem;
   display: flex;
-  background-color: #dfacac;
+  background-color: #98abbe;
 }
 
 .options__left {
@@ -103,7 +103,7 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e81010;
+  background-color: #105ce8;
   height: 50px;
   border-radius: 5px;
   color: var(--main-light);
@@ -120,7 +120,7 @@ video {
   display: flex;
   flex-direction: column;
   flex: 0.3;
-  background-color: #dfacac;
+  background-color: #98abbe;
 }
 
 .main__chat_window {
