@@ -14,13 +14,18 @@
   </head>
   <body>
     <div class="header">
-      <div class="logo">
-        <div class="header__back">
-          <i class="fas fa-angle-left"></i>
-        </div>
-        <h3>Video Chat</h2>
+      <div class="para">
+        <h2 id="p1"></h2>
       </div>
-    </div>  
+
+      <div class="logo">
+        <h3>Video Chat</h3>
+      </div>
+
+      <div class="para">
+        <h2 id="p2"></h2>
+      </div>
+    </div>   
     <div class="main">  
     <div class="main__left">
       <div class="videos__group">
@@ -72,4 +77,25 @@
   </div>
   </body>
   <script src="script.js"></script>
+  <script> 
+    var today =new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours()+":"+today.getMinutes();
+    var Time= time;
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    var n = weekday[d.getDay()];
+    var dayDate= n+ ' • ' +date;
+
+    document.getElementById("p1").innerHTML =Time;
+    document.getElementById("p2").innerHTML =dayDate;
+  </script>
 </html>
