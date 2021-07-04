@@ -41,8 +41,5 @@ io.on("connection", (socket) => {
   });
 });
 
-socket.on("disconnect", () => {
-  console.log(socket.id)
-})
 
 server.listen(process.env.PORT || 3030);
