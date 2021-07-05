@@ -32,6 +32,11 @@ function create_meeting()
   location.href = "/room";
 };
 
+function leave_meeting()
+{
+  peer.destroy();
+};
+
 let myVideoStream;
 navigator.mediaDevices
   .getUserMedia({
@@ -145,6 +150,7 @@ send.addEventListener("click", (e) => {
   }
 });
 
+let leavecall
 text.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && text.value.length !== 0) {
     socket.emit("message", text.value);
