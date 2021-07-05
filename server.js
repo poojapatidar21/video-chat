@@ -39,9 +39,9 @@ io.on("connection", (socket) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
   });
-  socket.on("disconnect", (reason)=>{
-    socket.broadcast.emit("user-disconnected", userId);
-  });
+  // socket.on("disconnect", (reason)=>{
+  //   socket.broadcast.emit("user-disconnected", userId);
+  // });
 });
 
 
