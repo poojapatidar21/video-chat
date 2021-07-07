@@ -35,6 +35,7 @@ function create_meeting()
 function leave_meeting()
 {
   peer.destroy();
+  location.href = "/";
 };
 
 let myVideoStream;
@@ -61,14 +62,24 @@ navigator.mediaDevices
       messages.innerHTML =
       messages.innerHTML +
       `<div class="message">
-      
           <b>
           <span> ${
-            userName === user ? "You joined" : userName+" joined"
+             userName+" joined"
           }</span> </b>
-    
       </div>`;
       connectToNewUser(userId, stream);
+    });
+
+    socket.on("callended", (userId,userName) => {
+      messages.innerHTML =
+      messages.innerHTML +
+      `<div class="message">
+          <b>
+          <span> ${
+          userName+" leaved"
+          }</span> </b>
+      </div>`;
+      disconnectToUser(userId, stream);
     });
   });
 
@@ -78,6 +89,12 @@ const connectToNewUser = (userId, stream) => {
   call.on("stream", (userVideoStream) => {
     addVideoStream(video, userVideoStream);
     currentPeer=call.peerConnection
+  });
+};
+const disconnectToUser = (userId, stream) => {
+  const video = document.createElement("video");
+  call.on("stream", (userVideoStream) => {
+    removeVideoStream(video, userVideoStream);
   });
 };
 
@@ -92,6 +109,15 @@ const addVideoStream = (video, stream) => {
     videoGrid.append(video);
   });
 };
+
+const removeVideoStream = (video, stream) => {
+  video.srcObject = stream;
+  video.addEventListener("loadedmetadata", () => {
+    video.play();
+    videoGrid.remove(video);
+  });
+};
+
 
 let screenStream;
 let isScreenShare=false;
