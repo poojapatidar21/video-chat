@@ -52,7 +52,6 @@ navigator.mediaDevices
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
-        console.log("next video stream");
         addVideoStream(video, userVideoStream);
         currentPeer=call.peerConnection
       });
@@ -93,9 +92,8 @@ const connectToNewUser = (userId, stream) => {
 };
 const disconnectToUser = (userId, stream) => {
   const video = document.createElement("video");
-  call.on("stream", (userVideoStream) => {
-    removeVideoStream(video, userVideoStream);
-  });
+  removeVideoStream(video, stream);
+  
 };
 
 peer.on("open", (id) => {
