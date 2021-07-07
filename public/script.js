@@ -91,9 +91,12 @@ const connectToNewUser = (userId, stream) => {
   });
 };
 const disconnectToUser = (userId, stream) => {
+  const call = peer.call(userId, stream);
   const video = document.createElement("video");
-  console.log(stream);
-  removeVideoStream(video, stream);
+  call.on("stream", (userVideoStream) => {
+    removeVideoStream(video, userVideoStream);
+    currentPeer=call.peerConnection
+  });
   
 };
 
