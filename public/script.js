@@ -92,6 +92,7 @@ const connectToNewUser = (userId, stream) => {
 };
 const disconnectToUser = (userId, stream) => {
   const video = document.createElement("video");
+  console.log(stream);
   removeVideoStream(video, stream);
   
 };
@@ -161,7 +162,6 @@ screenShare.addEventListener('click', (e) => {
     isScreenShare=false;
   }
 })
-
 
 let text = document.querySelector("#chat_message");
 let send = document.getElementById("send");
