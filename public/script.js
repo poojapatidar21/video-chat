@@ -47,13 +47,13 @@ navigator.mediaDevices
   })
   .then((stream) => {
     myVideoStream = stream;
-    addVideoStream(myVideo, stream);
+    addVideoStream(myVideo, stream,1);
 
     peer.on("call", (call) => {
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
-        addVideoStream(video, userVideoStream);
+        addVideoStream(video, userVideoStream,1);
         currentPeer=call.peerConnection
       });
     });
@@ -87,7 +87,7 @@ const connectToNewUser = (userId, stream) => {
   const call = peer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    addVideoStream(video, userVideoStream);
+    addVideoStream(video, userVideoStream,userId);
     currentPeer=call.peerConnection
   });
 };
@@ -102,7 +102,7 @@ peer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id, user);
 });
 
-const addVideoStream = (video, stream) => {
+const addVideoStream = (video, stream,userId) => {
   video.srcObject = stream;
   video.addEventListener("loadedmetadata", () => {
     video.play();
