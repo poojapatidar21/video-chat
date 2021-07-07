@@ -110,7 +110,9 @@ const addVideoStream = (video, stream) => {
     video.play();
     videoGrid.append(video);
   });
+  console.log(videoGrid)
 };
+
 
 const removeVideoStream = (video, stream) => {
   video.srcObject = stream;
@@ -119,7 +121,6 @@ const removeVideoStream = (video, stream) => {
     videoGrid.remove(video);
   });
 };
-
 
 let screenStream;
 let isScreenShare=false;
