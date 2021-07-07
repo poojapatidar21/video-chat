@@ -3,6 +3,7 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 const showChat = document.querySelector("#showChat");
 const backBtn = document.querySelector(".header__back");
+const uservideo = new Map();
 myVideo.muted = true;
 
 backBtn.addEventListener("click", () => {
@@ -91,12 +92,9 @@ const connectToNewUser = (userId, stream) => {
   });
 };
 const disconnectToUser = (userId, stream) => {
-  const call = peer.call(userId, stream);
-  const video = document.createElement("video");
-  call.on("stream", (userVideoStream) => {
-    removeVideoStream(video, userVideoStream);
-    currentPeer=call.peerConnection
-  });
+  console.log(videoGrid)
+  videoGrid.remove(uservideo.get(userId));
+  console.log(videoGrid)
   
 };
 
@@ -109,18 +107,11 @@ const addVideoStream = (video, stream) => {
   video.addEventListener("loadedmetadata", () => {
     video.play();
     videoGrid.append(video);
+    uservideo.set(userId,video)
   });
   console.log(videoGrid)
 };
 
-
-const removeVideoStream = (video, stream) => {
-  video.srcObject = stream;
-  video.addEventListener("loadedmetadata", () => {
-    video.play();
-    videoGrid.remove(video);
-  });
-};
 
 let screenStream;
 let isScreenShare=false;
