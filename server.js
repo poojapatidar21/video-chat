@@ -33,7 +33,7 @@ app.get("/start", (req, res) => {
   res.render("start", { roomId: req.params.room });
 });
 app.get("/room", (req, res) => {
-  res.redirect(`/${uuidv4()}`);
+  res.redirect(`/roomid/${uuidv4()}`);
 });
 
 
@@ -41,9 +41,9 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
  
 db.once('open', function () {
-  // app.get("/:room", (req, res) => {
-  //   res.render("room", { roomId: req.params.room });
-  // });
+  app.get("/roomid/:room", (req, res) => {
+    res.render("room", { roomId: req.params.room });
+  });
   app.post("/addUser", async (req, res) => {
     console.log("1")
     console.log(req.body);
