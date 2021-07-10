@@ -48,6 +48,7 @@ function login()
   }).then(response => response.json())
 
     .then(json => {
+      console.log(json)
       if (status === 200) {
         localStorage.setItem("username", username);
         localStorage.setItem("password", password);
