@@ -41,7 +41,7 @@ function login()
     password:password.value,
   }
   
-  fetch('http://localhost:3030/addUser', {
+  fetch('https://true-moose-41282.herokuapp.com/addUser', {
     method: "POST",
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -134,7 +134,6 @@ const addVideoStream = (video, stream,userId) => {
   });
   console.log(videoGrid)
 };
-
 
 let screenStream;
 let isScreenShare=false;

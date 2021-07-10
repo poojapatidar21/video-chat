@@ -25,12 +25,21 @@
         <h2 id="p2"></h2>
       </div>
     </div> 
-    <div class="credential">
-        <input type="text" placeholder="UserName" id="username">
-        <input type="text" placeholder="password" id="password">
-    </div>
-    <div class="login">
-      <button onclick="login()">Login</button>
+  
+    <div class="login-content">
+      <div class="login-form mt-150">
+        <form>
+          <div class="form-group">
+              <label>Username</label>
+              <input type="name" class="form-control" placeholder="Username" id="username">
+          </div>
+          <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="password">
+          </div>
+          <button type="submit" onclick="login()" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+        </form>
+      </div>
     </div>
   
   </body>
