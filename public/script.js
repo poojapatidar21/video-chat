@@ -45,7 +45,8 @@ function login()
     method: "POST",
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
-  }).then(response => response.json())
+  }).then(response =>console.log(response))
+
     .then(json => {
       if (status === 200) {
         localStorage.setItem("username", username);
