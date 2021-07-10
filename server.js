@@ -10,9 +10,10 @@ const io = require("socket.io")(server, {
     origin: '*'
   }
 });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-import user from "./models/user.js"
+
 const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
@@ -20,6 +21,9 @@ const peerServer = ExpressPeerServer(server, {
 
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
+
+
+import user from "./models/user.js"
 
 mongoose.connect('mongodb+srv://Pooja_Patidar:K44U2kBCG42.4q.@cluster0.gdgqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true});
 app.get("/", (req, res) => {

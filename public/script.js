@@ -37,21 +37,20 @@ function login()
   let username = document.getElementById("username");
   let password = document.getElementById("password");
   let _data = {
-    userName: username,
-    password:password,
+    userName: username.value,
+    password:password.value,
   }
   
-  fetch('https://true-moose-41282.herokuapp.com/addUser', {
+  fetch('http://localhost:3030/addUser', {
     method: "POST",
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
   }).then(response => response.json())
-
     .then(json => {
       console.log(json)
-      if (status === 200) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
+      if (json.status === 200) {
+        localStorage.setItem("username", username.value);
+        localStorage.setItem("password", password.value);
         location.href = "/start";
       }
     })
@@ -262,4 +261,3 @@ socket.on("createMessage", (message, userName) => {
         <span>${message}</span>
     </div>`;
 });
-
