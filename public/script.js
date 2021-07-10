@@ -32,7 +32,6 @@ function create_meeting()
 {
   location.href = "/room";
 };
-
 function leave_meeting()
 {
   peer.destroy();
