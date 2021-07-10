@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser  = require('body-parser');
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
@@ -9,8 +10,10 @@ const io = require("socket.io")(server, {
     origin: '*'
   }
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+import user from "./models/user.js"
 const { ExpressPeerServer } = require("peer");
-const user = require("./models/user");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
@@ -34,20 +37,23 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
  
 db.once('open', function () {
-  app.get("/:room", (req, res) => {
-    res.render("room", { roomId: req.params.room });
-  });
-  app.post("/addUser", async(req, res) => {
+  // app.get("/:room", (req, res) => {
+  //   res.render("room", { roomId: req.params.room });
+  // });
+  app.post("/addUser", async (req, res) => {
+    console.log("1")
+    console.log(req.body);
     let result = await user.find({ userName: req.body.userName })
+    console.log(result)
     if (result.length > 0) {
       res.json({status:404,msg:"username already exist"})
     }
     else {
-      var user = new user({
+      var user1 = new user({
         userName:req.body.userName,
         password: req.body.password,
       });
-      await user.save();
+      await user1.save();
       res.json({status:200,msg:"username added"})
     }
   });
