@@ -32,30 +32,7 @@ function create_meeting()
 {
   location.href = "/room";
 };
-function login()
-{
-  let username = document.getElementById("username");
-  let password = document.getElementById("password");
-  let _data = {
-    userName: username.value,
-    password:password.value,
-  }
-  
-  fetch('https://true-moose-41282.herokuapp.com/addUser', {
-    method: "POST",
-    body: JSON.stringify(_data),
-    headers: {"Content-type": "application/json; charset=UTF-8"}
-  }).then(response => response.json())
-    .then(json => {
-      console.log(json)
-      if (json.status === 200) {
-        localStorage.setItem("username", username.value);
-        localStorage.setItem("password", password.value);
-        location.href = "/start";
-      }
-    })
-    .catch(err => console.log(err));
-};
+
 function leave_meeting()
 {
   peer.destroy();
@@ -134,6 +111,7 @@ const addVideoStream = (video, stream,userId) => {
   });
   console.log(videoGrid)
 };
+
 
 let screenStream;
 let isScreenShare=false;
@@ -260,3 +238,4 @@ socket.on("createMessage", (message, userName) => {
         <span>${message}</span>
     </div>`;
 });
+
