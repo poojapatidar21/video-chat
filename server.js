@@ -16,7 +16,7 @@ const peerServer = ExpressPeerServer(server, {
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 
-app.get("/s", (req, res) => {
+app.get("/", (req, res) => {
   res.render("start", { roomId: req.params.room });
 });
 app.get("/room", (req, res) => {
