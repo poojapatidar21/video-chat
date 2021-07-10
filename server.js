@@ -34,7 +34,7 @@ db.once('open', function () {
   app.get("/:room", (req, res) => {
     res.render("room", { roomId: req.params.room });
   });
-  app.post("/addUser", (req, res) => {
+  app.post("/addUser", async(req, res) => {
     let result = await user.find({ userName: req.body.userName })
     if (result.length > 0) {
       res.json({status:404,msg:"username already exist"})
