@@ -20,6 +20,9 @@ app.use(express.static("public"));
 
 mongoose.connect('mongodb+srv://Pooja_Patidar:<password>@cluster0.gdgqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true});
 app.get("/", (req, res) => {
+  res.render("login", { roomId: req.params.room });
+});
+app.get("/start", (req, res) => {
   res.render("start", { roomId: req.params.room });
 });
 app.get("/room", (req, res) => {

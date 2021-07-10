@@ -37,7 +37,7 @@ function login()
   let username = document.getElementById("username");
   let password = document.getElementById("password");
   let _data = {
-    username: username,
+    userName: username,
     password:password,
   }
   
@@ -46,7 +46,13 @@ function login()
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
   }).then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => {
+      if (status === 200) {
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+        location.href = "/start";
+      }
+    })
     .catch(err => console.log(err));
 };
 function leave_meeting()
