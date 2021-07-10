@@ -18,7 +18,7 @@ const peerServer = ExpressPeerServer(server, {
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 
-mongoose.connect('mongodb+srv://Pooja_Patidar:<password>@cluster0.gdgqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://Pooja_Patidar:K44U2kBCG42.4q.@cluster0.gdgqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true});
 app.get("/", (req, res) => {
   res.render("login", { roomId: req.params.room });
 });

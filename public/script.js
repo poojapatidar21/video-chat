@@ -45,7 +45,7 @@ function login()
     method: "POST",
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
-  }).then(response =>console.log(response))
+  }).then(response => response.json())
 
     .then(json => {
       if (status === 200) {
