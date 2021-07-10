@@ -5,19 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
-    "esm": "^3.2.25",
     "express": "^4.17.1",
     "mongoose": "^5.13.2",
     "nodemon": "^2.0.9",
     "peer": "^0.6.1",
     "socket.io": "^4.1.2",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25"
   }
 }
