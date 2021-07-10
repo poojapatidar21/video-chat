@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
@@ -9,6 +10,7 @@ const io = require("socket.io")(server, {
   }
 });
 const { ExpressPeerServer } = require("peer");
+const user = require("./models/user");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
@@ -16,9 +18,7 @@ const peerServer = ExpressPeerServer(server, {
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-//   res.redirect(`/${uuidv4()}`);
-// });
+mongoose.connect('mongodb+srv://Pooja_Patidar:<password>@cluster0.gdgqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true});
 app.get("/", (req, res) => {
   res.render("start", { roomId: req.params.room });
 });
@@ -26,10 +26,29 @@ app.get("/room", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
-app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.params.room });
-});
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+ 
+db.once('open', function () {
+  app.get("/:room", (req, res) => {
+    res.render("room", { roomId: req.params.room });
+  });
+  app.post("/addUser", (req, res) => {
+    let result = await user.find({ userName: req.body.userName })
+    if (result.length > 0) {
+      res.json({status:404,msg:"username already exist"})
+    }
+    else {
+      var user = new user({
+        userName:req.body.userName,
+        password: req.body.password,
+      });
+      await user.save();
+      res.json({status:200,msg:"username added"})
+    }
+  });
+ });
 
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
