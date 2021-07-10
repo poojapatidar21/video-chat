@@ -32,7 +32,23 @@ function create_meeting()
 {
   location.href = "/room";
 };
-
+function login()
+{
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let _data = {
+    username: username,
+    password:password,
+  }
+  
+  fetch('https://true-moose-41282.herokuapp.com/addUser', {
+    method: "POST",
+    body: JSON.stringify(_data),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+  }).then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err));
+};
 function leave_meeting()
 {
   peer.destroy();
