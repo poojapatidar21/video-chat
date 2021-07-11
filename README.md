@@ -28,10 +28,13 @@ Demo Video -
 
 Follow the instructions below to run the application:
 1. Clone the repository and install all dependancies.
+
     `npm init`
+    
     `npm install express ejs socket.io uuid peer nodemon`
 2. cd video-chat
 3. Run the application
+
     `node server.js`
 4. You can visit the web app at [localhost:(http://127.0.0.1:3030/)](http://127.0.0.1:3030/) in your browser.
 
