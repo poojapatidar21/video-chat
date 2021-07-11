@@ -68,6 +68,7 @@ navigator.mediaDevices
       </div>`;
       connectToNewUser(userId, stream);
     });
+});
 
 const connectToNewUser = (userId, stream) => {
   const call = peer.call(userId, stream);
