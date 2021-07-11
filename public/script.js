@@ -69,19 +69,6 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     });
 
-    socket.on("callended", (userId,userName) => {
-      messages.innerHTML =
-      messages.innerHTML +
-      `<div class="message">
-          <b>
-          <span> ${
-          userName+" leaved"
-          }</span> </b>
-      </div>`;
-      disconnectToUser(userId, stream);
-    });
-  });
-
 const connectToNewUser = (userId, stream) => {
   const call = peer.call(userId, stream);
   const video = document.createElement("video");
