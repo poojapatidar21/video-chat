@@ -33,7 +33,7 @@ Follow the instructions below to run the application:
 2. cd video-chat
 3. Run the application
     `node server.js`
-4. You can visit the web app at [localhost:(http://127.0.0.1:8000/)](http://127.0.0.1:8000/) in your browser.
+4. You can visit the web app at [localhost:(http://127.0.0.1:3030/)](http://127.0.0.1:3030/) in your browser.
 
 
 ## Screenshots
