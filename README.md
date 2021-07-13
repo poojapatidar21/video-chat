@@ -42,7 +42,8 @@ Follow the instructions below to run the application:
 ## Screenshots
 
 Home Page
-
+![alt text](C:\Users\Pooja Patidar\Pictures\Screenshots\Screenshot (299).png)
 
 In Call
+![alt text](C:\Users\Pooja Patidar\Pictures\Screenshots\Screenshot (299).png)
 
