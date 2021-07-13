@@ -39,11 +39,4 @@ Follow the instructions below to run the application:
 4. You can visit the web app at [localhost:(http://127.0.0.1:3030/)](http://127.0.0.1:3030/) in your browser.
 
 
-## Screenshots
-
-Home Page
-![alt text](C:\Users\Pooja Patidar\Pictures\Screenshots\Screenshot (299).png)
-
-In Call
-![alt text](C:\Users\Pooja Patidar\Pictures\Screenshots\Screenshot (299).png)
 
