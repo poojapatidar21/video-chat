@@ -1,6 +1,6 @@
 # video-chat
 
-This is a video calling web application where users can call other user and will also have the capabiltiy to mute their mic & audio ad share their screen with others. Their is also real time chat functionality. 
+This is a video calling web application where users can call other user and will also have the capability to mute their mic, off their video and share their screen with others. There is also real time chat functionality. 
 
 Project Link -  https://my-video-chats.herokuapp.com/
 
